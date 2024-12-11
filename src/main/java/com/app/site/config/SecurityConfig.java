@@ -25,7 +25,7 @@ public class SecurityConfig {
             .and()
             .csrf().disable() // CSRF 비활성화 (필요한 경우)
             .authorizeRequests()
-            .antMatchers("/user/kakao-login").permitAll() // 카카오 로그인 엔드포인트 허용
+            .antMatchers("/user/**").permitAll() // 카카오 로그인 엔드포인트 허용
             .anyRequest().authenticated(); // 나머지 요청은 인증 필요
 
         return http.build();
