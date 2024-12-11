@@ -21,13 +21,13 @@ public class UserServiceImpl implements UserService{
 		this.userRepository = userRepository;
 	}
 
-	@Override
-	public List<UserDto> getAllUser() throws Exception {
-		return userRepository.findAll()
-				.stream()
-				.map(user -> new UserDto(user.getId(), user.getName(), user.getPhoneNum()))
-				.collect(Collectors.toList());
-	}
+//	@Override
+//	public List<UserDto> getAllUser() throws Exception {
+//		return userRepository.findAll()
+//				.stream()
+//				.map(user -> new UserDto(user.getId(), user.getName(), user.getPhoneNum()))
+//				.collect(Collectors.toList());
+//	}
 
 	@Override
 	public User saveUser(User user) throws Exception {

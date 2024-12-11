@@ -44,11 +44,11 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@GetMapping("/selectList")
-	public ResponseEntity<List<UserDto>> main() throws Exception {
-		List<UserDto> users = userService.getAllUser();
-		return ResponseEntity.ok(users); 
-	}
+//	@GetMapping("/selectList")
+//	public ResponseEntity<List<UserDto>> main() throws Exception {
+//		List<UserDto> users = userService.getAllUser();
+//		return ResponseEntity.ok(users); 
+//	}
 
 	@PostMapping("/saveUser")
 	public ResponseEntity<User> saveUser(@RequestBody User user) throws Exception {
