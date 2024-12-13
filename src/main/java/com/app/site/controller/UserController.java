@@ -120,6 +120,31 @@ public class UserController {
         }
     }
 	
+	@PostMapping("/google/login")
+    public ResponseEntity<?> googleLogin(@RequestBody Map<String, String> body) {
+        String token = body.get("token");
+        
+        System.out.println(token);
+
+        // Google API URL to fetch user info
+        String url = "https://www.googleapis.com/oauth2/v3/userinfo?access_token=" + token;
+
+        try {
+        	RestTemplate restTemplate = new RestTemplate();
+            // Google API 호출해서 사용자 정보 가져오기
+            String response = restTemplate.getForObject(url, String.class);
+            
+            System.out.println(response);
+
+            // 여기서 사용자 정보를 DB에 저장하는 로직 추가 (예: User 객체에 저장)
+            // 예시: saveGoogleUserToDatabase(response);
+
+            return ResponseEntity.ok(response); // 사용자가 로그인한 정보를 반환
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("구글 로그인 처리 중 오류 발생");
+        }
+    }
+	
 	@PostMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate(); // 세션 무효화
